@@ -1,3 +1,4 @@
+  
 {
   // Use IntelliSense to learn about possible attributes.
   // Hover to view descriptions of existing attributes.
@@ -8,9 +9,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch in Browser",
-      "skipFiles": [
-        "<node_internals>/**"
-      ],
+      "skipFiles": ["<node_internals>/**"],
       "program": "${workspaceFolder}/bin/www",
       "serverReadyAction": {
         "pattern": "Listening on port ([0-9]+)",

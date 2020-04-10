@@ -23,8 +23,29 @@ describe('GET /api/v1/books', () => {
     expect(response.status).to.equal(200)
   });
 
-  it('responds with lst of books', () => {
-    const expectedBody = { books: [{ title: 'Goosebumps' }] }
-    expect(jsonResponse(response)).to.equal(JSON.stringify(expectedBody))
+  it('responds with list of books as an array', () => {
+    console.table(response.body.books)
+    expect(response.body.books)
+      .to.be.an('array')
   });
-});
+
+  it('returns title', () => {
+    expect(response.body.books[0].title)
+      .to.equal('Node thanks')
+  });
+})
+
+describe('GET /api/v1/books/:id', () => {
+  before(async () => {
+    response = await request.get('/api/v1/books/1')
+  })
+
+  it('responds with status 200', () => {
+    expect(response.status).to.equal(200)
+  });
+
+  it('responds with a single book', () => {
+    expect(response.body.book.id)
+      .to.equal(1)
+  });
+})
